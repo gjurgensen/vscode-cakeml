@@ -2,19 +2,19 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "CakeML",
   "patterns": [
+    {"include": "#operators"},
     {"include": "#symbols"},
     {"include": "#keywords"},
     {"include": "#comments"},
     {"include": "#strings"},
     {"include": "#numbers"},
-    {"include": "#operators"},
-    {"include": "#compose"},
-    {"include": "#constructors"}],
+    {"include": "#constructors"},
+    {"include": "#constant-types"}],
   "repository": {
     "symbols": {
       "patterns": [{
-        "name": "keyword.symbol.cakeml",
-        "match": "(<=|>=|=>|=|\\||\\;)"
+        "name": "keyword.control.cakeml",
+        "match": "(=>|=|\\||\\:|\\;)"
       }]
     },
     "keywords": {
@@ -40,24 +40,22 @@
     "numbers": {
       "patterns": [{
         "name": "constant.numeric.cakeml",
-        "match": "(\\~|\\b\\d+\\b)"
+        "match": "\\b\\d+\\b"
       }]
     },
     "operators": {
       "patterns": [{
-        "name": "constant.language.operator.cakeml",
-        "match": "(\\+|\\-|\\*|\\/|\\^|\\@|:\\=|\\!|\\[|\\,|\\]|::)"
-      }]
-    },
-    "compose": {
-      "patterns": [{
-        "name": "constant.language.compose.cakeml",
-        "match": "\\bo\\b"
+        "name": "keyword.operator.cakeml",
+        "match": "(\\+|\\-|\\~|\\*|\\/|\\bdiv\\b|\\bmod\\b|\\<\\>|\\<\\=|\\>\\=|\\<|\\>|\\bo\\b|\\-\\>|\\^|\\@|:\\=|\\!|\\>\\>|\\<\\<|\\~\\>\\>|\\[|\\,|\\]|::)"
       }]
     },
     "constructors": {
       "name": "constant.language.constructor.cakeml",
       "match": "\\b[A-Z]\\w*\\b"
+    },
+    "constant-types": {
+      "name": "support.type.cakeml",
+      "match": "\\b(?<=[^\\.])(unit|bool|int|rat|char|string|option|list|map|ordering)\\b"
     }
   },
   "scopeName": "source.cakeml"
