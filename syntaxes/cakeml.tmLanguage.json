@@ -24,7 +24,7 @@
       }]
     },
    "comments": {
-      "name": "comment.cakeml",
+      "name": "comment.block.cakeml",
       "begin": "\\(\\*",
       "end": "\\*\\)"
     },
@@ -39,24 +39,24 @@
     },
     "numbers": {
       "patterns": [{
-        "name": "constant.character.number.cakeml",
-        "match": "\\b\\d+\\b"
+        "name": "constant.numeric.cakeml",
+        "match": "(\\~|\\b\\d+\\b)"
       }]
     },
     "operators": {
       "patterns": [{
-        "name": "constant.character.operator.cakeml",
-        "match": "(\\+|\\-|\\*|\\/|\\^|\\@|\\[|\\,|\\]|::|\\~)"
+        "name": "constant.language.operator.cakeml",
+        "match": "(\\+|\\-|\\*|\\/|\\^|\\@|:\\=|\\!|\\[|\\,|\\]|::)"
       }]
     },
     "compose": {
       "patterns": [{
-        "name": "constant.character.compose.cakeml",
+        "name": "constant.language.compose.cakeml",
         "match": "\\bo\\b"
       }]
     },
     "constructors": {
-      "name": "constant.character.constructor.cakeml",
+      "name": "constant.language.constructor.cakeml",
       "match": "\\b[A-Z]\\w*\\b"
     }
   },
