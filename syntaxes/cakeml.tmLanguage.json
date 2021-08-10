@@ -7,8 +7,10 @@
     {"include": "#keywords"},
     {"include": "#comments"},
     {"include": "#strings"},
-    {"include": "#numbers"},
+    {"include": "#decimals"},
+    {"include": "#hexadecimals"},
     {"include": "#constructors"},
+    {"include": "#constants"},
     {"include": "#constant-types"}],
   "repository": {
     "symbols": {
@@ -20,7 +22,7 @@
     "keywords": {
       "patterns": [{
         "name": "keyword.control.cakeml",
-        "match": "\\b(fun|fn|val|let|local|in|end|if|then|else|datatype|type|case|of|structure|struct)\\b"
+        "match": "\\b(fun|fn|val|let|local|in|end|if|then|else|datatype|type|case|of|structure|struct|exception|handle|raise|op)\\b"
       }]
     },
    "comments": {
@@ -30,28 +32,38 @@
     },
     "strings": {
       "name": "string.quoted.double.cakeml",
-      "begin": "\"",
+      "begin": "#?\"",
       "end": "\"",
       "patterns": [{
      	  "name": "constant.character.escape.cakeml",
           "match": "\\\\."
       }]
     },
-    "numbers": {
+    "decimals": {
       "patterns": [{
-        "name": "constant.numeric.cakeml",
+        "name": "constant.numeric.decimal.cakeml",
         "match": "\\b\\d+\\b"
+      }]
+    },
+    "hexadecimals": {
+      "patterns": [{
+        "name": "constant.numeric.hexadecimal.cakeml",
+        "match": "\\b0x\\h+\\b"
       }]
     },
     "operators": {
       "patterns": [{
         "name": "keyword.operator.cakeml",
-        "match": "(\\+|\\-|\\~|\\*|\\/|\\bdiv\\b|\\bmod\\b|\\<\\>|\\<\\=|\\>\\=|\\<|\\>|\\bo\\b|\\-\\>|\\^|\\@|:\\=|\\!|\\>\\>|\\<\\<|\\~\\>\\>|\\[|\\,|\\]|::)"
+        "match": "(\\+|\\-|\\~|\\*|\\/|\\bdiv\\b|\\bmod\\b|\\borelse\\b|\\bandalso\\b|\\<\\>|\\<\\=|\\>\\=|\\<|\\>|\\bo\\b|\\-\\>|\\^|\\@|:\\=|\\!|\\>\\>|\\<\\<|\\~\\>\\>|\\[|\\,|\\]|::)"
       }]
     },
     "constructors": {
       "name": "constant.language.constructor.cakeml",
       "match": "\\b[A-Z]\\w*\\b"
+    },
+    "constants": {
+      "name": "constant.language.value.cakeml",
+      "match": "\\(\\)"
     },
     "constant-types": {
       "name": "support.type.cakeml",
