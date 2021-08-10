@@ -2,26 +2,24 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "CakeML",
   "patterns": [
-    {"include": "#fun-decls"},
-    {"include": "#val-decls"},
-    {"include": "#type-decls"},
+    {"include": "#decls"},
     {"include": "#operators"},
     {"include": "#symbols"},
     {"include": "#keywords"},
     {"include": "#comments"},
-    {"include": "#strings"},
-    {"include": "#decimals"},
-    {"include": "#hexadecimals"},
+    {"include": "#literals"},
     {"include": "#constructors"},
     {"include": "#constants"},
     {"include": "#constant-types"}],
   "repository": {
+
     "symbols": {
       "patterns": [{
         "name": "keyword.control.cakeml",
         "match": "(=>|\\||\\:|\\;)"
       }]
     },
+
     "type-exprs": {
       "patterns": [
         {"name": "support.type.type-expr.cakeml",
@@ -32,19 +30,33 @@
         }
       ]
     },
+
     "binders": {
       "patterns": [
-        {"begin": "\\(([a-z]\\w*)\\s*(\\:)",
-         "end": "\\)",
-         "captures": {
-           "1": {"name": "variable.parameter.cakeml"},
-           "2": {"name": "keyword.control.cakeml"}
-         },
-         "include": "#type-exprs"
-        },
-        {"name": "variable.parameter.cakeml",
-         "match": "\\b[a-z]\\w*\\b"
-        }
+        {"include": "#explicit-binders"},
+        {"include": "#implicit-binders"}
+      ]
+    },
+    "implicit-binders": {
+      "name": "variable.parameter.cakeml",
+      "match": "\\b[a-z]\\w*\\b"
+    },
+    "explicit-binders": {
+      "begin": "\\(([a-z]\\w*)\\s*(\\:)",
+      "end": "\\)",
+      "beginCaptures": {
+        "1": {"name": "variable.parameter.cakeml"},
+        "2": {"name": "keyword.control.cakeml"}
+      },
+      "include": "#type-exprs"
+    },
+
+    "decls": {
+      "patterns": [
+        {"include": "#fun-decls"},
+        {"include": "#val-decls"},
+        {"include": "#type-decls"},
+        {"include": "#datatype-decls"}
       ]
     },
     "fun-decls": {
@@ -70,23 +82,53 @@
       }
     },
     "type-decls": {
-      "match": "\\b(type)\\s+([a-z]\\w*)\\s*(=)",
-      "captures": {
+      "begin": "\\b(type)\\s+([a-z]\\w*)\\b",
+      "end": "(=)",
+      "beginCaptures": {
         "1": {"name": "storage.type.cakeml"},
-        "2": {"name": "entity.name.function.cakeml"},
-        "3": {"name": "keyword.control.cakeml"}
-      }
+        "2": {"name": "entity.name.function.cakeml"}
+      },
+      "endCaptures": {
+        "1": {"name": "keyword.control.cakeml"}
+      },
+      "patterns": [{
+        "include": "#implicit-binders"
+      }]
     },
+    "datatype-decls": {
+      "begin": "\\b(datatype)\\s+([a-z]\\w*)\\b",
+      "end": "(=)",
+      "beginCaptures": {
+        "1": {"name": "storage.type.cakeml"},
+        "2": {"name": "entity.name.function.cakeml"}
+      },
+      "endCaptures": {
+        "1": {"name": "keyword.control.cakeml"}
+      },
+      "patterns": [{
+        "include": "#implicit-binders"
+      }]
+    },
+
     "keywords": {
       "patterns": [{
         "name": "keyword.control.cakeml",
-        "match": "\\b(fn|let|local|in|end|if|then|else|datatype|case|of|structure|struct|exception|handle|raise|op)\\b"
+        "match": "\\b(fn|let|local|in|end|if|then|else|case|of|structure|struct|exception|handle|raise|op)\\b"
       }]
     },
-   "comments": {
+
+    "comments": {
       "name": "comment.block.cakeml",
       "begin": "\\(\\*",
       "end": "\\*\\)"
+    },
+
+    "literals": {
+      "patterns": [
+        {"include": "#strings"},
+        {"include": "#decimals"},
+        {"include": "#hexadecimals"}
+      ]
     },
     "strings": {
       "name": "string.quoted.double.cakeml",
