@@ -1,0 +1,25 @@
+{
+    "name": "vscode-cakeml",
+    "displayName": "vscode-cakeml",
+    "description": "Language support for CakeML",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.59.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "cakeml",
+            "aliases": ["CakeML", "cakeml"],
+            "extensions": [".cml"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "cakeml",
+            "scopeName": "source.cakeml",
+            "path": "./syntaxes/cakeml.tmLanguage.json"
+        }]
+    }
+}
