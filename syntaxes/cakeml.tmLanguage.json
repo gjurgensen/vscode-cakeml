@@ -40,13 +40,13 @@
     "numbers": {
       "patterns": [{
         "name": "constant.character.number.cakeml",
-        "match": "\\b~?\\d+\\b"
+        "match": "\\b\\d+\\b"
       }]
     },
     "operators": {
       "patterns": [{
         "name": "constant.character.operator.cakeml",
-        "match": "(\\+|\\-|\\*|\\/|\\^|\\@|\\[|\\,|\\]|::)"
+        "match": "(\\+|\\-|\\*|\\/|\\^|\\@|\\[|\\,|\\]|::|\\~)"
       }]
     },
     "compose": {
