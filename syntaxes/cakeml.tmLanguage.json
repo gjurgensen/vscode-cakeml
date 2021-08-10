@@ -2,6 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "CakeML",
   "patterns": [
+    {"include": "#fun-decls"},
+    {"include": "#val-decls"},
+    {"include": "#type-decls"},
     {"include": "#operators"},
     {"include": "#symbols"},
     {"include": "#keywords"},
@@ -16,13 +19,68 @@
     "symbols": {
       "patterns": [{
         "name": "keyword.control.cakeml",
-        "match": "(=>|=|\\||\\:|\\;)"
+        "match": "(=>|\\||\\:|\\;)"
       }]
+    },
+    "type-exprs": {
+      "patterns": [
+        {"name": "support.type.type-expr.cakeml",
+         "match": "\\b(?<=[^\\.])(unit|bool|int|rat|char|string|option|list|map|ordering)\\b"
+        },
+        {"name": "keyword.operator.type-expr.cakeml",
+         "match": "->"
+        }
+      ]
+    },
+    "binders": {
+      "patterns": [
+        {"begin": "\\(([a-z]\\w*)\\s*(\\:)",
+         "end": "\\)",
+         "captures": {
+           "1": {"name": "variable.parameter.cakeml"},
+           "2": {"name": "keyword.control.cakeml"}
+         },
+         "include": "#type-exprs"
+        },
+        {"name": "variable.parameter.cakeml",
+         "match": "\\b[a-z]\\w*\\b"
+        }
+      ]
+    },
+    "fun-decls": {
+      "begin": "\\b(fun)\\s+([a-z]\\w*)\\b",
+      "end": "(=)",
+      "beginCaptures": {
+        "1": {"name": "storage.type.cakeml"},
+        "2": {"name": "entity.name.function.cakeml"}
+      },
+      "endCaptures": {
+        "1": {"name": "keyword.control.cakeml"}
+      },
+      "patterns": [{
+        "include": "#binders"
+      }]
+    },
+    "val-decls": {
+      "match": "\\b(val)\\s+([a-z]\\w*)\\s*(=)",
+      "captures": {
+        "1": {"name": "storage.type.cakeml"},
+        "2": {"name": "entity.name.function.cakeml"},
+        "3": {"name": "keyword.control.cakeml"}
+      }
+    },
+    "type-decls": {
+      "match": "\\b(type)\\s+([a-z]\\w*)\\s*(=)",
+      "captures": {
+        "1": {"name": "storage.type.cakeml"},
+        "2": {"name": "entity.name.function.cakeml"},
+        "3": {"name": "keyword.control.cakeml"}
+      }
     },
     "keywords": {
       "patterns": [{
         "name": "keyword.control.cakeml",
-        "match": "\\b(fun|fn|val|let|local|in|end|if|then|else|datatype|type|case|of|structure|struct|exception|handle|raise|op)\\b"
+        "match": "\\b(fn|let|local|in|end|if|then|else|datatype|case|of|structure|struct|exception|handle|raise|op)\\b"
       }]
     },
    "comments": {
@@ -54,7 +112,7 @@
     "operators": {
       "patterns": [{
         "name": "keyword.operator.cakeml",
-        "match": "(\\+|\\-|\\~|\\*|\\/|\\bdiv\\b|\\bmod\\b|\\borelse\\b|\\bandalso\\b|\\<\\>|\\<\\=|\\>\\=|\\<|\\>|\\bo\\b|\\-\\>|\\^|\\@|:\\=|\\!|\\>\\>|\\<\\<|\\~\\>\\>|\\[|\\,|\\]|::)"
+        "match": "(\\+|\\-|\\~|\\*|\\/|\\bdiv\\b|\\bmod\\b|\\borelse\\b|\\bandalso\\b|\\=|\\<\\>|\\<\\=|\\>\\=|\\<|\\>|\\bo\\b|\\-\\>|\\^|\\@|:\\=|\\!|\\>\\>|\\<\\<|\\~\\>\\>|\\[|\\,|\\]|::)"
       }]
     },
     "constructors": {
