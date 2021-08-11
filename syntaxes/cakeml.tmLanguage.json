@@ -35,7 +35,10 @@
     "binders": {
       "patterns": [
         {"include": "#explicit-binders"},
-        {"include": "#implicit-binders"}
+        {"include": "#implicit-binders"},
+        {"name": "constant.language.value.cakeml",
+         "match": "\\(\\)"
+        }
       ]
     },
     "implicit-binders": {
@@ -91,12 +94,28 @@
       }]
     },
     "val-decls": {
-      "match": "\\b(val)\\s+([a-z]\\w*)\\s*(=)",
-      "captures": {
-        "1": {"name": "storage.type.cakeml"},
-        "2": {"name": "entity.name.function.cakeml"},
-        "3": {"name": "keyword.control.cakeml"}
-      }
+      "patterns": [
+        {"match": "\\b(val)\\s+([a-z]\\w*)\\s*(=)",
+         "captures": {
+           "1": {"name": "storage.type.cakeml"},
+           "2": {"name": "entity.name.function.cakeml"},
+           "3": {"name": "keyword.control.cakeml"}
+         }
+        },
+        {"match": "\\b(val)\\s+(\\(\\))\\s*(=)",
+         "captures": {
+           "1": {"name": "storage.type.cakeml"},
+           "2": {"name": "constant.language.value.cakeml"},
+           "3": {"name": "keyword.control.cakeml"}
+         }
+        },
+        {"match": "\\b(val)\\s+_\\s*(=)",
+         "captures": {
+           "1": {"name": "storage.type.cakeml"},
+           "2": {"name": "keyword.control.cakeml"}
+         }
+        }
+      ]
     },
     "type-decls": {
       "begin": "\\b(type)\\s+([a-z]\\w*)\\b",
