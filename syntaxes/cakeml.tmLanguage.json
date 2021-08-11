@@ -115,6 +115,19 @@
          "endCaptures": {
            "1": {"name": "keyword.control.cakeml"}
          }
+        },
+        {"begin": "(?<=\\bval)\\s*(\\()\\s*(?:([a-z]\\w*)\\s*(\\,)\\s*)+([a-z]\\w*)\\s*(\\))",
+         "end": "(=)",
+         "beginCaptures": {
+           "1": {"name": "keyword.control.cakeml"},
+           "2": {"name": "variable.parameter.cakeml"},
+           "3": {"name": "keyword.control.cakeml"},
+           "4": {"name": "variable.parameter.cakeml"},
+           "5": {"name": "keyword.control.cakeml"}
+         },
+         "endCaptures": {
+           "1": {"name": "keyword.control.cakeml"}
+         }
         }
       ]
     },
