@@ -1,0 +1,8 @@
+# Change Log
+
+All notable changes to the "vscode-cakeml" extension will be documented in this file.
+
+This format is based on [Keep a Changelog](http://keepachangelog.com/).
+
+## [0.0.1]
+- Initial release
