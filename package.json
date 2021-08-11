@@ -2,7 +2,7 @@
     "name": "vscode-cakeml",
     "displayName": "vscode-cakeml",
     "description": "Language support for CakeML",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "GrantJurgensen",
     "repository": "https://github.com/gjurgensen/vscode-cakeml.git",
     "engines": {

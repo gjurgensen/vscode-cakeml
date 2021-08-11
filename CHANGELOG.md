@@ -11,3 +11,4 @@ This format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Allow nested comments
 - More flexible function/datatype declarations
 - Allow tuple patterns in val declarations
+- Fix type declarations

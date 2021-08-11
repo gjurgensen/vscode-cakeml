@@ -125,19 +125,6 @@
         }
       ]
     },
-    "type-decls": {
-      "begin": "(?<=\\btype)\\s+([a-z](?:\\'|\\w)*)\\b",
-      "end": "(=)",
-      "beginCaptures": {
-        "1": {"name": "entity.name.function.cakeml"}
-      },
-      "endCaptures": {
-        "1": {"name": "keyword.control.cakeml"}
-      },
-      "patterns": [{
-        "include": "#implicit-binders"
-      }]
-    },
     "datatype-decls": {
       "patterns": [
         {"begin": "(?<=\\bdatatype)\\s+(?:('[a-z](?:\\'|\\w)*)\\s+)?([a-z](?:\\'|\\w)*)\\b",
@@ -179,6 +166,34 @@
          }
         },
         {"begin": "(?<=\\band)\\s*(\\()\\s*(?:('[a-z](?:\\'|\\w)*)\\s*(\\,)\\s*)+('[a-z](?:\\'|\\w)*)\\s*(\\))\\s*([a-z](?:\\'|\\w)*)\\b",
+         "end": "(=)",
+         "beginCaptures": {
+           "1": {"name": "keyword.control.cakeml"},
+           "2": {"name": "variable.parameter.cakeml"},
+           "3": {"name": "keyword.control.cakeml"},
+           "4": {"name": "variable.parameter.cakeml"},
+           "5": {"name": "keyword.control.cakeml"},
+           "6": {"name": "entity.name.function.cakeml"}
+         },
+         "endCaptures": {
+           "1": {"name": "keyword.control.cakeml"}
+         }
+        }
+      ]
+    },
+    "type-decls": {
+      "patterns": [
+        {"begin": "(?<=\\btype)\\s+(?:('[a-z](?:\\'|\\w)*)\\s+)?([a-z](?:\\'|\\w)*)\\b",
+         "end": "(=)",
+         "beginCaptures": {
+           "1": {"name": "variable.parameter.cakeml"},
+           "2": {"name": "entity.name.function.cakeml"}
+         },
+         "endCaptures": {
+           "1": {"name": "keyword.control.cakeml"}
+         }
+        },
+        {"begin": "(?<=\\btype)\\s*(\\()\\s*(?:('[a-z](?:\\'|\\w)*)\\s*(\\,)\\s*)+('[a-z](?:\\'|\\w)*)\\s*(\\))\\s*([a-z](?:\\'|\\w)*)\\b",
          "end": "(=)",
          "beginCaptures": {
            "1": {"name": "keyword.control.cakeml"},
