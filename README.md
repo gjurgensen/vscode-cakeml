@@ -1,5 +1,3 @@
 Basic syntax highlighting for CakeML.
 
-Currently highlights keywords, reserved symbols, constructors, list syntax, and standard operators.
-
-It is currently context-unaware (e.g. it doesn't expect a `then` to follow an `if`).
+The grammar is largely context-unaware. For example, it doesn't expect nor enforce that a `then` clause follows an `if`. The function and datatype declarations are an exception, where context is necessary to identify parameters.
