@@ -10,8 +10,7 @@
     {"include": "#comments"},
     {"include": "#literals"},
     {"include": "#constructors"},
-    {"include": "#constants"},
-    {"include": "#constant-types"}],
+    {"include": "#constants"}],
   "repository": {
 
     "symbols": {
@@ -197,7 +196,8 @@
       "patterns": [
         {"include": "#strings"},
         {"include": "#decimals"},
-        {"include": "#hexadecimals"}
+        {"include": "#hexadecimals"},
+        {"include": "#ffi-funcs"}
       ]
     },
     "strings": {
@@ -221,24 +221,28 @@
         "match": "\\b0x\\h+\\b"
       }]
     },
+    "ffi-funcs": {
+      "name": "constant.language.cakeml",
+      "match": "#\\([^\\)]*\\)"
+    },
+
     "operators": {
       "patterns": [{
         "name": "keyword.operator.cakeml",
         "match": "(\\+|\\-|\\~|\\*|\\/|\\bdiv\\b|\\bmod\\b|\\borelse\\b|\\bandalso\\b|\\=|\\<\\>|\\<\\=|\\>\\=|\\<|\\>|\\bo\\b|\\-\\>|\\^|\\@|:\\=|\\!|\\>\\>|\\<\\<|\\~\\>\\>|\\[|\\,|\\]|::)"
       }]
     },
+
     "constructors": {
       "name": "constant.language.constructor.cakeml",
       "match": "\\b[A-Z]\\w*\\b"
     },
+
     "constants": {
       "name": "constant.language.value.cakeml",
       "match": "\\(\\)"
-    },
-    "constant-types": {
-      "name": "support.type.cakeml",
-      "match": "\\b(?<=[^\\.])(unit|bool|int|rat|char|string|option|list|map|ordering)\\b"
     }
+
   },
   "scopeName": "source.cakeml"
 }
