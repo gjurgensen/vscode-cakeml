@@ -9,3 +9,4 @@ This format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [0.0.2]
 - Allow nested comments
+- More flexible function/datatype declarations
