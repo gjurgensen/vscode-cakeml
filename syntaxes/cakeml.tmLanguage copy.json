@@ -58,8 +58,7 @@
         {"include": "#fun-and-decls"},
         {"include": "#val-decls"},
         {"include": "#type-decls"},
-        {"include": "#datatype-decls"},
-        {"include": "#datatype-and-decls"}
+        {"include": "#datatype-decls"}
       ]
     },
     "fun-decls": {
@@ -114,49 +113,21 @@
     },
     "datatype-decls": {
       "patterns": [
-        {"match": "\\b(datatype)\\s+(?:('[a-z]\\w*)\\s+)?([a-z]\\w*)\\s*(=)",
+        {"match": "\\b(datatype)\\s(\\'[a-z]\\w*)\\s(=)",
          "captures": {
            "1": {"name": "storage.type.cakeml"},
            "2": {"name": "variable.parameter.cakeml"},
-           "3": {"name": "entity.name.function.cakeml"},
-           "4": {"name": "keyword.control.cakeml"}
+           "3": {"name": "keyword.control.cakeml"}
          }
         },
-        {"match": "\\b(datatype)\\s*(\\()\\s*(?:('[a-z]\\w*)\\s*(\\,)\\s*)+('[a-z]\\w*)\\s*(\\))\\s*([a-z]\\w*)\\s*(=)",
-         "captures": {
-           "1": {"name": "storage.type.cakeml"},
-           "2": {"name": "keyword.control.cakeml"},
-           "3": {"name": "variable.parameter.cakeml"},
-           "4": {"name": "keyword.control.cakeml"},
-           "5": {"name": "variable.parameter.cakeml"},
-           "6": {"name": "keyword.control.cakeml"},
-           "7": {"name": "entity.name.function.cakeml"},
-           "8": {"name": "keyword.control.cakeml"}
-         }
-        }
-      ]
-    },
-    "datatype-and-decls": {
-      "patterns": [
-        {"match": "\\b(and)\\s+(?:('[a-z]\\w*)\\s+)?([a-z]\\w*)\\s*(=)",
-         "captures": {
-           "1": {"name": "storage.type.cakeml"},
-           "2": {"name": "variable.parameter.cakeml"},
-           "3": {"name": "entity.name.function.cakeml"},
-           "4": {"name": "keyword.control.cakeml"}
-         }
-        },
-        {"match": "\\b(and)\\s*(\\()\\s*(?:('[a-z]\\w*)\\s*(\\,)\\s*)+('[a-z]\\w*)\\s*(\\))\\s*([a-z]\\w*)\\s*(=)",
-         "captures": {
-           "1": {"name": "storage.type.cakeml"},
-           "2": {"name": "keyword.control.cakeml"},
-           "3": {"name": "variable.parameter.cakeml"},
-           "4": {"name": "keyword.control.cakeml"},
-           "5": {"name": "variable.parameter.cakeml"},
-           "6": {"name": "keyword.control.cakeml"},
-           "7": {"name": "entity.name.function.cakeml"},
-           "8": {"name": "keyword.control.cakeml"}
-         }
+        {"match": "\\b(datatype)\\s\\(\\s(?:(\\'[a-z]\\w*)\\s,\\s)+(\\'[a-z]\\w*)\\s\\)\\s([a-z]\\w*)\\s?(=)",
+          "captures": {
+            "1": {"name": "storage.type.cakeml"},
+            "2": {"name": "variable.parameter.cakeml"},
+            "3": {"name": "variable.parameter.cakeml"},
+            "4": {"name": "entity.name.function.cakeml"},
+            "5": {"name": "keyword.control.cakeml"}
+          }
         }
       ]
     },
