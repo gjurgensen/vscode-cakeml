@@ -92,7 +92,7 @@
     },
     "val-decls": {
       "patterns": [
-        {"begin": "(?<=\\bval)\\s+([a-z](?:\\'|\\w)*)\\b",
+        {"begin": "(?<=\\bval)\\s+(?:([a-z](?:\\'|\\w)*)|\\_)\\b",
          "end": "(=)",
          "beginCaptures": {
            "1": {"name": "entity.name.function.cakeml"}
@@ -110,13 +110,7 @@
            "1": {"name": "keyword.control.cakeml"}
          }
         },
-        {"begin": "(?<=\\bval)\\s+_\\b",
-         "end": "(=)",
-         "endCaptures": {
-           "1": {"name": "keyword.control.cakeml"}
-         }
-        },
-        {"begin": "(?<=\\bval)\\s*(\\()\\s*(?:([a-z](?:\\'|\\w)*)\\s*(\\,)\\s*)+([a-z](?:\\'|\\w)*)\\s*(\\))",
+        {"begin": "(?<=\\bval)\\s*(\\()\\s*(?:(?:([a-z](?:\\'|\\w)*)|\\_)\\s*(\\,)\\s*)+(?:([a-z](?:\\'|\\w)*)|\\_)\\s*(\\))",
          "end": "(=)",
          "beginCaptures": {
            "1": {"name": "keyword.control.cakeml"},
