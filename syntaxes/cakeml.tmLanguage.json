@@ -92,24 +92,28 @@
     },
     "val-decls": {
       "patterns": [
-        {"match": "\\b(val)\\s+([a-z]\\w*)\\s*(=)",
-         "captures": {
-           "1": {"name": "storage.type.cakeml"},
-           "2": {"name": "entity.name.function.cakeml"},
-           "3": {"name": "keyword.control.cakeml"}
+        {"begin": "(?<=\\bval)\\s+([a-z]\\w*)\\b",
+         "end": "(=)",
+         "beginCaptures": {
+           "1": {"name": "entity.name.function.cakeml"}
+         },
+         "endCaptures": {
+           "1": {"name": "keyword.control.cakeml"}
          }
         },
-        {"match": "\\b(val)\\s+(\\(\\))\\s*(=)",
-         "captures": {
-           "1": {"name": "storage.type.cakeml"},
-           "2": {"name": "constant.language.value.cakeml"},
-           "3": {"name": "keyword.control.cakeml"}
+        {"begin": "(?<=\\bval)\\s+(\\(\\))\\b",
+         "end": "(=)",
+         "beginCaptures": {
+           "1": {"name": "constant.language.value.cakeml"}
+         },
+         "endCaptures": {
+           "1": {"name": "keyword.control.cakeml"}
          }
         },
-        {"match": "\\b(val)\\s+_\\s*(=)",
-         "captures": {
-           "1": {"name": "storage.type.cakeml"},
-           "2": {"name": "keyword.control.cakeml"}
+        {"begin": "(?<=\\bval)\\s+_\\b",
+         "end": "(=)",
+         "endCaptures": {
+           "1": {"name": "keyword.control.cakeml"}
          }
         }
       ]
@@ -187,7 +191,7 @@
     "keywords": {
       "patterns": [
         {"name": "storage.type.cakeml",
-         "match": "\\b(fun|and|type|datatype)\\b"
+         "match": "\\b(fun|and|val|type|datatype)\\b"
         },
         {"name": "keyword.control.cakeml",
          "match": "\\b(fn|let|local|in|end|if|then|else|case|of|structure|struct|exception|handle|raise|op)\\b"
