@@ -6,3 +6,6 @@ This format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [0.0.1]
 - Initial release
+
+## [0.0.2]
+- Allow nested comments

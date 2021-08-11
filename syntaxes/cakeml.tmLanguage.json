@@ -189,7 +189,10 @@
     "comments": {
       "name": "comment.block.cakeml",
       "begin": "\\(\\*",
-      "end": "\\*\\)"
+      "end": "\\*\\)",
+      "patterns": [
+        {"include": "#comments"}
+      ]
     },
 
     "literals": {
